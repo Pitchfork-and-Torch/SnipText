@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Build / package
+build/
+dist/
+*.spec.bak
+.eggs/
+
+# Local config / secrets (never publish)
+secrets.json
+*.key
+*.pem
+.local/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Wrangler
+landing/.wrangler/
+.wrangler/
+
+# Personal / machine
+Desktop/
+*.user
