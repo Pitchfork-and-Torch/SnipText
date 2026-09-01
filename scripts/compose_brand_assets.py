@@ -89,7 +89,7 @@ def main() -> None:
     card.paste(badge, (72, 90), badge)
     draw = ImageDraw.Draw(card)
     draw.text((220, 100), "SnipText", font=font(64, True), fill=(248, 250, 252, 255))
-    draw.text((220, 178), "1.2 The Ledger  ·  Snip. Read. Clipboard.", font=font(22), fill=(91, 219, 255, 255))
+    draw.text((220, 178), "1.2.2 The Ledger  ·  Snip. Read. Clipboard.", font=font(22), fill=(91, 219, 255, 255))
     draw.text((72, 280), "Click. Drag. Transcribe.", font=font(42, True), fill=(241, 245, 249, 255))
     draw.text((72, 340), "Accurate text from any on-screen region,", font=font(24), fill=(203, 213, 225, 255))
     draw.text((72, 376), "copied to your clipboard in one fluid motion.", font=font(24), fill=(203, 213, 225, 255))

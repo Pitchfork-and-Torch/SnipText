@@ -4,6 +4,7 @@
 
 Premium desktop utility: snip any on-screen region and get **accurate text on your clipboard** - like Snipping Tool, but the deliverable is text, not a PNG.
 
+[![Version](https://img.shields.io/badge/version-1.2.2-5BDBFF)](https://github.com/Pitchfork-and-Torch/SnipText/releases/latest)
 [![Site](https://img.shields.io/badge/site-sniptext.jonbailey.xyz-5BDBFF)](https://sniptext.jonbailey.xyz/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Credit](https://img.shields.io/badge/credit-Pitchfork--and--Torch-111827)](NOTICE)
@@ -26,13 +27,13 @@ Optional editable preview. Vision AI when you connect a key. Local OCR when you 
 - Multi-monitor, high-DPI capture
 - Modular engines: xAI Grok vision (default), OpenAI, Anthropic, Google, RapidOCR / Paddle / Easy / Tesseract
 - Tray app: Clip Desk (search, pin, copy, export/import a local JSON ledger), Connect AI, delay snip, settings
-- Startup banner + single-instance (second launch opens Settings)
-- Hotkey recorder, Start with Windows, privacy-first keys (OS keyring)
+- Startup banner; Windows single-instance (second launch opens Settings)
+- Hotkey recorder, Start with Windows, privacy-first keys (OS keyring when available)
 - MIT open source with **required attribution** (see [NOTICE](NOTICE))
 
 ## Download (Windows)
 
-**Current release: v1.2.1 The Ledger** (camera shutter on capture)
+**Current package: v1.2.2 The Ledger** (docs and site lockstep; camera shutter on capture from 1.2.1)
 
 1. Open the [latest release](https://github.com/Pitchfork-and-Torch/SnipText/releases/latest)
 2. Download `SnipText-Windows-portable.zip`
