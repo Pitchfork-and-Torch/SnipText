@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SnipText 1.2 The Ledger | Click. Drag. Clipboard.</title>
-  <meta name="description" content="SnipText 1.2 The Ledger: snip a screen region to text, pin keepers, then export a local JSON ledger. Vision AI or local OCR. Privacy-first Windows app." />
+  <title>SnipText 1.2.2 The Ledger | Click. Drag. Clipboard.</title>
+  <meta name="description" content="SnipText 1.2.2: snip a screen region to clipboard text. Clip Desk searches, pins, and exports a local JSON ledger. Vision AI when you add a key, or local OCR offline. Windows portable zip; Python source on macOS and Linux." />
   <link rel="canonical" href="https://sniptext.jonbailey.xyz/" />
   <meta name="theme-color" content="#0b1220" />
   <meta name="author" content="Pitchfork-and-Torch" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="sitemap" type="application/xml" href="https://sniptext.jonbailey.xyz/sitemap.xml" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SnipText" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://sniptext.jonbailey.xyz/" />
-  <meta property="og:title" content="SnipText 1.2 The Ledger - export the desk" />
-  <meta property="og:description" content="Click, drag, clipboard. Clip Desk exports a local JSON ledger. Nothing is uploaded." />
-  <meta property="og:image" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.0" />
-  <meta property="og:image:secure_url" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.0" />
+  <meta property="og:title" content="SnipText 1.2.2 The Ledger - export the desk" />
+  <meta property="og:description" content="Click, drag, clipboard. Clip Desk export and import is a local JSON file. Local OCR never leaves the device. Vision AI sends the crop only to the provider you connect." />
+  <meta property="og:image" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.2" />
+  <meta property="og:image:secure_url" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.2" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -25,9 +27,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@suddenlyjon" />
   <meta name="twitter:creator" content="@suddenlyjon" />
-  <meta name="twitter:title" content="SnipText 1.2 The Ledger - export the desk" />
-  <meta name="twitter:description" content="The snipping tool that gives you text, not a PNG. Export and import Clip Desk as a local ledger." />
-  <meta name="twitter:image" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.0" />
+  <meta name="twitter:title" content="SnipText 1.2.2 The Ledger - export the desk" />
+  <meta name="twitter:description" content="The snipping tool that gives you text, not a PNG. Clip Desk export and import stay on the disk you choose." />
+  <meta name="twitter:image" content="https://sniptext.jonbailey.xyz/og.jpg?v=1.2.2" />
   <meta name="twitter:image:alt" content="SnipText product card" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -37,31 +39,69 @@
   <link rel="preload" href="/fonts/fontshare/clash-display/woff2/ClashDisplay-Semibold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/fontshare/satoshi/woff2/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/fontshare/fonts.css" />
-  <link rel="stylesheet" href="/assets/styles.css?v=1.2.0" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1.2.2" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "SnipText",
+    "alternateName": "SnipText The Ledger",
     "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Windows, macOS, Linux",
-    "softwareVersion": "1.2.1",
+    "operatingSystem": "Windows",
+    "softwareVersion": "1.2.2",
+    "isAccessibleForFree": true,
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Snip a screen region to clipboard text. Clip Desk searches, pins, and exports a local JSON ledger. Vision AI or local OCR.",
+    "description": "Snip a screen region to clipboard text. Clip Desk searches, pins, and exports a local JSON ledger. Vision AI when you add a key, or local OCR offline.",
     "url": "https://sniptext.jonbailey.xyz/",
-    "image": "https://sniptext.jonbailey.xyz/og.jpg?v=1.2.0",
+    "image": "https://sniptext.jonbailey.xyz/og.jpg?v=1.2.2",
+    "screenshot": "https://sniptext.jonbailey.xyz/assets/infographic.jpg",
+    "downloadUrl": "https://github.com/Pitchfork-and-Torch/SnipText/releases/latest",
+    "installUrl": "https://github.com/Pitchfork-and-Torch/SnipText/releases/latest",
+    "softwareHelp": "https://github.com/Pitchfork-and-Torch/SnipText#readme",
+    "softwareRequirements": "Windows portable zip (SnipText-Windows-portable.zip), or Python 3.11+ from source on Windows, macOS, or Linux",
+    "featureList": [
+      "Region snip to clipboard text",
+      "Clip Desk search, pin, copy, export and import a local JSON ledger",
+      "Vision AI (xAI, OpenAI, Anthropic, Google) when you add your own key",
+      "Local OCR offline (RapidOCR; optional Paddle, EasyOCR, Tesseract)",
+      "Multi-monitor high-DPI capture",
+      "Camera shutter on capture (Windows; toggle in Settings)"
+    ],
     "author": {
       "@type": "Organization",
       "name": "Pitchfork-and-Torch",
       "url": "https://github.com/Pitchfork-and-Torch"
     },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Pitchfork-and-Torch",
+      "url": "https://github.com/Pitchfork-and-Torch"
+    },
+    "sameAs": [
+      "https://github.com/Pitchfork-and-Torch/SnipText"
+    ],
     "license": "https://opensource.org/licenses/MIT",
-    "downloadUrl": "https://github.com/Pitchfork-and-Torch/SnipText/releases/latest"
+    "dateModified": "2026-09-01"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SnipText",
+    "url": "https://sniptext.jonbailey.xyz/",
+    "description": "Product site for SnipText, a desktop region-to-clipboard utility by Pitchfork-and-Torch.",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Pitchfork-and-Torch",
+      "url": "https://github.com/Pitchfork-and-Torch"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -74,7 +114,15 @@
         "name": "What is SnipText?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SnipText is a desktop app that captures a screen region and places accurate transcribed text on your clipboard. Hotkey, drag, release - done."
+          "text": "SnipText is a desktop app that captures a screen region and places transcribed text on your clipboard. Hotkey, drag, release - done."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SnipText free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The app is free and open source under MIT. Vision providers may bill for their own API usage if you add a key."
         }
       },
       {
@@ -82,7 +130,7 @@
         "name": "Do I need an API key?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Local OCR works offline. Add an xAI, OpenAI, Anthropic, or Google key in Settings for maximum accuracy via vision models."
+          "text": "No. Local OCR works offline. Add an xAI, OpenAI, Anthropic, or Google key in Settings for vision-model accuracy."
         }
       },
       {
@@ -106,7 +154,23 @@
         "name": "What is The Ledger?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Ledger is a local JSON export of Clip Desk. Export and import stay on your machine. Nothing is uploaded."
+          "text": "The Ledger is a local JSON export of Clip Desk. Export and import stay on disk you choose. The ledger file is not uploaded."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SnipText run on macOS or Linux?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Source runs on Windows, macOS, and Linux with Python 3.11+. The published portable zip is Windows only. Packaging scripts for other OS are in the repo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I give credit if I fork?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keep LICENSE and NOTICE, and credit Pitchfork-and-Torch in your README or About UI. Suggested line is in NOTICE."
         }
       }
     ]
@@ -132,7 +196,7 @@
     <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-inner">
-        <p class="eyebrow">1.2.1 The Ledger · Pitchfork-and-Torch</p>
+        <p class="eyebrow">1.2.2 The Ledger · Pitchfork-and-Torch</p>
         <h1>Click. Drag.<br /><em>Clipboard.</em></h1>
         <p class="lede">
           The snipping tool that gives you <strong>text</strong>, not another PNG.
@@ -200,7 +264,7 @@
       <div class="grid-3">
         <article class="feat glass">
           <h3>Clip Desk + Ledger</h3>
-          <p>Tray → Clip Desk. Search, pin, copy, then Export ledger.json. Import it back on this machine. A camera shutter plays when you snip (Windows). Nothing is uploaded.</p>
+          <p>Tray → Clip Desk. Search, pin, copy, then Export ledger.json. Import it back on this machine. Ledger files stay on disk you choose. A camera shutter plays when you snip (Windows; toggle in Settings).</p>
         </article>
         <article class="feat glass">
           <h3>Vision AI first</h3>
@@ -212,7 +276,7 @@
         </article>
         <article class="feat glass">
           <h3>Privacy-first</h3>
-          <p>Images stay in memory. Keys live in your OS keyring - never inside the EXE. Local mode never leaves the device.</p>
+          <p>Snips stay in memory unless you save the image from the preview. Keys live in your OS keyring when available. Local OCR never leaves the device. Vision AI sends the crop only to the provider you connect.</p>
         </article>
         <article class="feat glass">
           <h3>Multi-monitor ready</h3>
@@ -247,12 +311,24 @@
       </div>
       <div class="faq-list">
         <details class="glass" open>
+          <summary>What is SnipText?</summary>
+          <p>A desktop app that captures a screen region and places transcribed text on your clipboard. Hotkey, drag, release - done.</p>
+        </details>
+        <details class="glass">
           <summary>Is SnipText free?</summary>
           <p>Yes. The app is free and open source under MIT. Vision providers may bill for their own API usage if you add a key.</p>
         </details>
         <details class="glass">
+          <summary>Do I need an API key?</summary>
+          <p>No. Local OCR works offline. Add an xAI, OpenAI, Anthropic, or Google key in Settings for vision-model accuracy.</p>
+        </details>
+        <details class="glass">
+          <summary>Where are my API keys stored?</summary>
+          <p>Only on your machine (OS keyring when available). Keys are never bundled in the EXE and never required to use the app.</p>
+        </details>
+        <details class="glass">
           <summary>macOS / Linux?</summary>
-          <p>Source runs cross-platform with Python. The signed-ready portable EXE ships for Windows first. Packaging scripts for other OS are in the repo.</p>
+          <p>Source runs on Windows, macOS, and Linux with Python 3.11+. The published portable zip is Windows only. Packaging scripts for other OS are in the repo.</p>
         </details>
         <details class="glass">
           <summary>What is Clip Desk?</summary>
@@ -260,7 +336,7 @@
         </details>
         <details class="glass">
           <summary>What is The Ledger?</summary>
-          <p>A local JSON file of your Clip Desk. Export and import stay on disk you choose. No account. No cloud.</p>
+          <p>A local JSON file of your Clip Desk. Export and import stay on disk you choose. The ledger file is not uploaded.</p>
         </details>
         <details class="glass">
           <summary>How do I give credit if I fork?</summary>

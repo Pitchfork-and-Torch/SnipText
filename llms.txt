@@ -1,0 +1,12 @@
+# SnipText
+
+> Desktop region OCR: click, drag, clipboard. Clip Desk exports a local JSON ledger.
+
+- Version: 1.2.2 The Ledger (docs and site lockstep; camera shutter on capture from 1.2.1)
+- Site: https://sniptext.jonbailey.xyz/
+- Source: https://github.com/Pitchfork-and-Torch/SnipText
+- Download (Windows portable zip): https://github.com/Pitchfork-and-Torch/SnipText/releases/latest
+- License: MIT with attribution (see NOTICE) - credit Pitchfork-and-Torch when reusing
+- Author: Pitchfork-and-Torch
+
+Same brief as the product site: https://sniptext.jonbailey.xyz/llms.txt

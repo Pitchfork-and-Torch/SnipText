@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sniptext.jonbailey.xyz/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://sniptext.jonbailey.xyz/og.jpg?v=1.2.0</image:loc>
-      <image:title>SnipText 1.2 The Ledger</image:title>
+      <image:loc>https://sniptext.jonbailey.xyz/og.jpg?v=1.2.2</image:loc>
+      <image:title>SnipText 1.2.2 The Ledger</image:title>
     </image:image>
   </url>
 </urlset>
