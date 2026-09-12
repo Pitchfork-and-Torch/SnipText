@@ -1,0 +1,30 @@
+# SnipText
+
+> Desktop region OCR: click, drag, clipboard. Clip Desk exports a local JSON ledger.
+
+- Version: 1.3.0 Replay (replay last region; Clip Desk ledger still ships)
+- Site: https://sniptext.jonbailey.xyz/
+- Source: https://github.com/Pitchfork-and-Torch/SnipText
+- Download (Windows portable zip): https://github.com/Pitchfork-and-Torch/SnipText/releases/latest
+- License: MIT with attribution (see NOTICE) - credit Pitchfork-and-Torch when reusing
+- Author: Pitchfork-and-Torch
+
+## What it does
+
+1. Global hotkey opens a multi-monitor selection overlay
+2. Drag a region (Snipping Tool feel); release captures at native resolution
+3. Vision AI (xAI Grok default when a key is connected) or local OCR transcribes text
+4. Result is copied to the clipboard; optional editable preview
+5. Clip Desk (tray) searches, pins, recopies, and exports a local JSON ledger
+
+## Privacy
+
+- Snips stay in memory unless the user saves the image from the preview
+- API keys store in OS keyring when available / local config - never inside the EXE
+- Local-only mode never networks
+- Vision AI sends the crop only to the provider you connect
+- Ledger export is a JSON file you choose. The ledger file is not uploaded.
+
+## Credit
+
+If you copy or fork the code, keep LICENSE + NOTICE and credit Pitchfork-and-Torch.

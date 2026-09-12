@@ -1,0 +1,18 @@
+# Optional local OCR engines (install what you need)
+#
+# RapidOCR (recommended lightweight default):
+# - On Python 3.13: pin 1.2.3 (newer wheels require <3.13)
+# - On Python 3.11/3.12: prefer latest rapidocr-onnxruntime
+rapidocr-onnxruntime==1.2.3; python_version >= "3.13"
+rapidocr-onnxruntime>=1.3.24; python_version < "3.13"
+onnxruntime>=1.17.0
+
+# Best accuracy when wheels support your Python (often 3.11/3.12):
+# paddlepaddle
+# paddleocr
+
+# Secondary:
+# easyocr
+
+# System tesseract binary required separately:
+# pytesseract
