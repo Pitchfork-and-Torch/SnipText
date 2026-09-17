@@ -42,6 +42,25 @@ def main() -> int:
         pins = hist.list_desk("", limit=20, pinned_only=True)
         assert len(pins) == 1
 
+        # pins survive history_limit overflow; only unpinned recents are evicted
+        hist.clear_history()
+        keep = hist.push_history("keep me pinned", "rapid", limit=5)
+        assert hist.set_pinned(keep.id, True) is not None
+        for n in range(8):
+            hist.push_history(f"snip {n}", "rapid", limit=5)
+        after = hist.load_history(limit=200)
+        assert len(after) == 6, [i.text for i in after]
+        assert any(i.id == keep.id and i.pinned for i in after)
+        assert [i.text for i in after if not i.pinned] == [f"snip {n}" for n in range(7, 2, -1)]
+
+        # re-snipping a pinned text dedupes to one row and keeps the pin
+        hist.clear_history()
+        dup = hist.push_history("same text", "rapid", limit=5)
+        hist.set_pinned(dup.id, True)
+        hist.push_history("same text", "grok-4.5", limit=5)
+        rows = hist.load_history(limit=200)
+        assert len(rows) == 1 and rows[0].pinned
+
         hist.last_region_path = lambda: Path(tmp) / "last_region.json"
         hist.save_last_region((10, 20, 300, 80))
         replay = hist.load_last_region()

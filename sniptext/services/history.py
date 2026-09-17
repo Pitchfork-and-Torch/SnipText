@@ -11,6 +11,9 @@ from typing import Any, Optional
 
 from sniptext.services.config import history_path
 
+LEDGER_KIND = "clip-desk-ledger"
+LEDGER_LIMIT = 200
+
 
 def last_region_path() -> Path:
     return history_path().parent / "last_region.json"
@@ -111,7 +114,9 @@ def save_history(items: list[HistoryItem], limit: int = 15) -> None:
 
 
 def push_history(text: str, engine: str, limit: int = 15) -> HistoryItem:
-    items = load_history(limit=limit * 2)
+    """Insert a new snip at the top. ``limit`` caps unpinned recents only;
+    pinned items are never evicted by new snips."""
+    items = load_history(limit=max(limit * 2, LEDGER_LIMIT))
     item = HistoryItem(
         id=str(uuid.uuid4()),
         text=text,
@@ -119,15 +124,24 @@ def push_history(text: str, engine: str, limit: int = 15) -> HistoryItem:
         created_at=time.time(),
     )
     items.insert(0, item)
-    # drop empties / dedupe consecutive identical
+    # drop empties / dedupe consecutive identical (a pin on the dropped copy survives)
     cleaned: list[HistoryItem] = []
     for it in items:
         if not (it.text or "").strip():
             continue
         if cleaned and cleaned[-1].text == it.text:
+            cleaned[-1].pinned = cleaned[-1].pinned or it.pinned
             continue
         cleaned.append(it)
-    save_history(cleaned[:limit], limit=limit)
+    kept: list[HistoryItem] = []
+    recents = 0
+    for it in cleaned:
+        if it.pinned:
+            kept.append(it)
+        elif recents < limit:
+            kept.append(it)
+            recents += 1
+    save_history(kept, limit=max(len(kept), limit))
     return item
 
 
@@ -160,10 +174,6 @@ def list_desk(
         return pinned[:limit]
     rest = [i for i in items if not i.pinned]
     return (pinned + rest)[:limit]
-
-
-LEDGER_KIND = "clip-desk-ledger"
-LEDGER_LIMIT = 200
 
 
 def export_ledger(
