@@ -1,0 +1,22 @@
+{
+  "hotkey": "ctrl+shift+t",
+  "replay_hotkey": "ctrl+shift+r",
+  "engine_mode": "ai_first",
+  "vision_model": "grok-4.5",
+  "vision_detail": "high",
+  "output_format": "markdown",
+  "languages": ["en"],
+  "theme": "system",
+  "show_preview": true,
+  "notifications": true,
+  "shutter_sound": true,
+  "history_limit": 50,
+  "local_engine_order": ["paddle", "rapid", "easyocr", "tesseract"],
+  "first_run_complete": false,
+  "copy_image_too": false,
+  "preview_auto_dismiss_sec": 8,
+  "snip_delay_sec": 0,
+  "start_with_windows": false,
+  "dismissed_ai_nudge": false,
+  "dismissed_ocr_nudge": false
+}
