@@ -38,6 +38,15 @@ def main() -> None:
         == "see https://example.com/x now"
     )
     assert maybe_plain("see <https://example.com/x>", True) == "see <https://example.com/x>"
+    assert (
+        maybe_plain("mail me <user@example.com> please", False)
+        == "mail me user@example.com please"
+    )
+    assert maybe_plain("mail me <user@example.com>", True) == "mail me <user@example.com>"
+    assert (
+        maybe_plain("see <HTTPS://Example.COM/Path> now", False)
+        == "see HTTPS://Example.COM/Path now"
+    )
     print("POSTPROCESS OK")
 
 

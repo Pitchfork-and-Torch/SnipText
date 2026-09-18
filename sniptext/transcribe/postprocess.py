@@ -56,7 +56,13 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
     # targets like Face_(disambiguation) do not leave a stray ")".
     t = re.sub(r"\[([^\]]+)\]\((?:[^()]|\([^()]*\))*\)", r"\1", t)
     # Angle-bracket autolinks are markdown noise on a plain clipboard.
-    t = re.sub(r"<(https?://[^>\s]+)>", r"\1", t)
+    # http(s) schemes (any case) keep the URL; email autolinks keep the address.
+    t = re.sub(r"<(https?://[^>\s]+)>", r"\1", t, flags=re.IGNORECASE)
+    t = re.sub(
+        r"<([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,})>",
+        r"\1",
+        t,
+    )
     # Strike-through markers are noise in plain clipboard text.
     t = re.sub(r"~~([^~]+)~~", r"\1", t)
     t = re.sub(r"^#+\s*", "", t, flags=re.MULTILINE)
