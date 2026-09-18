@@ -55,6 +55,9 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
     # Allow one level of nested parentheses in the URL so Wikipedia-style
     # targets like Face_(disambiguation) do not leave a stray ")".
     t = re.sub(r"\[([^\]]+)\]\((?:[^()]|\([^()]*\))*\)", r"\1", t)
+    # Reference-style links [label][ref] / [label][] are also markdown noise;
+    # keep the visible label only. Distinct from inline [label](url) above.
+    t = re.sub(r"\[([^\]]+)\]\[(?:[^\]]*)\]", r"\1", t)
     # Angle-bracket autolinks are markdown noise on a plain clipboard.
     # http(s) schemes (any case) keep the URL; email autolinks keep the address.
     t = re.sub(r"<(https?://[^>\s]+)>", r"\1", t, flags=re.IGNORECASE)

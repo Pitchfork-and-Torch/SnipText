@@ -57,6 +57,12 @@ def main() -> None:
         == "mail me user@example.com please"
     )
     assert maybe_plain("mail me <mailto:user@example.com>", True) == "mail me <mailto:user@example.com>"
+
+    # Reference-style links must become the label only (not left as markdown).
+    assert maybe_plain("read [guide][intro] then [api][1]", False) == "read guide then api"
+    assert maybe_plain("collapsed [same][] ok", False) == "collapsed same ok"
+    assert maybe_plain("keep [guide][intro]", True) == "keep [guide][intro]"
+
     print("POSTPROCESS OK")
 
 
