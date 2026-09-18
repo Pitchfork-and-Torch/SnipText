@@ -33,6 +33,11 @@ def main() -> None:
     )
     assert maybe_plain("go [lab](https://example.com/a_(b)) x", False) == "go lab x"
     assert maybe_plain("keep ~~marked~~", True) == "keep ~~marked~~"
+    assert (
+        maybe_plain("see <https://example.com/x> now", False)
+        == "see https://example.com/x now"
+    )
+    assert maybe_plain("see <https://example.com/x>", True) == "see <https://example.com/x>"
     print("POSTPROCESS OK")
 
 

@@ -55,6 +55,8 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
     # Allow one level of nested parentheses in the URL so Wikipedia-style
     # targets like Face_(disambiguation) do not leave a stray ")".
     t = re.sub(r"\[([^\]]+)\]\((?:[^()]|\([^()]*\))*\)", r"\1", t)
+    # Angle-bracket autolinks are markdown noise on a plain clipboard.
+    t = re.sub(r"<(https?://[^>\s]+)>", r"\1", t)
     # Strike-through markers are noise in plain clipboard text.
     t = re.sub(r"~~([^~]+)~~", r"\1", t)
     t = re.sub(r"^#+\s*", "", t, flags=re.MULTILINE)
