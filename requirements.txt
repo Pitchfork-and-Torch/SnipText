@@ -1,0 +1,11 @@
+# SnipText core (vision + UI + capture). Local OCR is optional - see requirements-local.txt
+customtkinter>=5.2.0
+mss>=9.0.0
+Pillow>=10.0.0
+pynput>=1.7.6
+pystray>=0.19.5
+keyring>=25.0.0
+openai>=1.40.0
+httpx>=0.27.0
+plyer>=2.1.0
+numpy>=1.26.0
