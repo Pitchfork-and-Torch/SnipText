@@ -63,6 +63,14 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
         r"\1",
         t,
     )
+    # mailto: angle autolinks are also markdown noise; keep the address only.
+    # Distinct from bare <user@host> above - CommonMark allows <mailto:...> too.
+    t = re.sub(
+        r"<mailto:([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,})>",
+        r"\1",
+        t,
+        flags=re.IGNORECASE,
+    )
     # Strike-through markers are noise in plain clipboard text.
     t = re.sub(r"~~([^~]+)~~", r"\1", t)
     t = re.sub(r"^#+\s*", "", t, flags=re.MULTILINE)
