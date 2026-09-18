@@ -44,7 +44,12 @@ def clean_ocr_output(text: str) -> str:
 def maybe_plain(text: str, prefer_markdown: bool) -> str:
     if prefer_markdown:
         return text
-    # crude strip of md emphasis for plain mode
-    t = re.sub(r"[*_`]+", "", text)
+    # Strip paired markdown emphasis/code. Do not delete bare "_" inside
+    # identifiers (hello_world, file_name.txt) the way [*_`]+ did.
+    t = re.sub(r"`([^`]*?)`", r"\1", text)
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    t = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"\1", t)
+    t = re.sub(r"__([^_]+)__", r"\1", t)
+    t = re.sub(r"(?<![A-Za-z0-9])_([^_]+)_(?![A-Za-z0-9])", r"\1", t)
     t = re.sub(r"^#+\s*", "", t, flags=re.MULTILINE)
     return t
