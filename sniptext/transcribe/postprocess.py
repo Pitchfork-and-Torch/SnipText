@@ -51,6 +51,8 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
     t = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"\1", t)
     t = re.sub(r"__([^_]+)__", r"\1", t)
     t = re.sub(r"(?<![A-Za-z0-9])_([^_]+)_(?![A-Za-z0-9])", r"\1", t)
+    # Images first so ![alt](url) becomes "alt", not "!alt".
+    t = re.sub(r"!\[([^\]]*)\]\([^)]*\)", r"\1", t)
     # Plain mode should not leave markdown link sugar in clipboard text.
     t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", t)
     t = re.sub(r"^#+\s*", "", t, flags=re.MULTILINE)

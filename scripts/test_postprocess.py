@@ -22,6 +22,9 @@ def main() -> None:
     assert "_" in maybe_plain("snake_case_id", False)
     assert maybe_plain("see [docs](https://example.com/x) now", False) == "see docs now"
     assert maybe_plain("keep [docs](https://example.com/x)", True) == "keep [docs](https://example.com/x)"
+    assert maybe_plain("pic ![logo](https://cdn.example/a.png) here", False) == "pic logo here"
+    assert maybe_plain("![solo](https://cdn.example/a.png)", False) == "solo"
+    assert maybe_plain("keep ![logo](https://cdn.example/a.png)", True) == "keep ![logo](https://cdn.example/a.png)"
     print("POSTPROCESS OK")
 
 
