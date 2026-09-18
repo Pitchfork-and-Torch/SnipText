@@ -22,6 +22,8 @@ def main() -> None:
     assert "_" in maybe_plain("snake_case_id", False)
     assert maybe_plain("see [docs](https://example.com/x) now", False) == "see docs now"
     assert maybe_plain("keep [docs](https://example.com/x)", True) == "keep [docs](https://example.com/x)"
+    assert maybe_plain("was ~~old~~ now", False) == "was old now"
+    assert maybe_plain("keep ~~marked~~", True) == "keep ~~marked~~"
     print("POSTPROCESS OK")
 
 
