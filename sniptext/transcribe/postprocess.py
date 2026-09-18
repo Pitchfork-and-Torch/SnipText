@@ -58,6 +58,14 @@ def maybe_plain(text: str, prefer_markdown: bool) -> str:
     # Reference-style links [label][ref] / [label][] are also markdown noise;
     # keep the visible label only. Distinct from inline [label](url) above.
     t = re.sub(r"\[([^\]]+)\]\[(?:[^\]]*)\]", r"\1", t)
+    # After usages collapse, leftover reference definitions ([ref]: url) are
+    # still markdown noise on a plain clipboard. Strip whole definition lines.
+    t = re.sub(
+        r"^[ \t]*\[[^\]]+\]:[ \t]*\S+(?:[ \t]+(?:\"[^\"]*\"|'[^']*'|\([^)]*\)))?[ \t]*$",
+        "",
+        t,
+        flags=re.MULTILINE,
+    )
     # Angle-bracket autolinks are markdown noise on a plain clipboard.
     # http(s) schemes (any case) keep the URL; email autolinks keep the address.
     t = re.sub(r"<(https?://[^>\s]+)>", r"\1", t, flags=re.IGNORECASE)

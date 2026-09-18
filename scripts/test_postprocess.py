@@ -63,6 +63,19 @@ def main() -> None:
     assert maybe_plain("collapsed [same][] ok", False) == "collapsed same ok"
     assert maybe_plain("keep [guide][intro]", True) == "keep [guide][intro]"
 
+    # Reference definitions left after usages must not stay on the clipboard.
+    assert (
+        maybe_plain("read [guide][intro]\n\n[intro]: https://example.com", False)
+        == "read guide\n\n"
+    )
+    assert maybe_plain('[intro]: https://example.com "Title"', False) == ""
+    assert maybe_plain("[intro]: https://example.com 'Title'", False) == ""
+    assert maybe_plain("[intro]: https://example.com (Title)", False) == ""
+    assert (
+        maybe_plain("keep\n[intro]: https://example.com", True)
+        == "keep\n[intro]: https://example.com"
+    )
+
     print("POSTPROCESS OK")
 
 
