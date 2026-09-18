@@ -13,6 +13,10 @@ from sniptext.services.config import history_path
 
 LEDGER_KIND = "clip-desk-ledger"
 LEDGER_LIMIT = 200
+# Pin/delete already read past LEDGER_LIMIT; desk/search/export/import must too.
+DESK_LOAD_LIMIT = max(LEDGER_LIMIT * 5, 1000)
+
+
 
 
 def last_region_path() -> Path:
@@ -156,7 +160,7 @@ def clear_history() -> None:
 
 def search_history(query: str, limit: int = 15) -> list[HistoryItem]:
     q = (query or "").strip().lower()
-    items = load_history(limit=200)
+    items = load_history(limit=DESK_LOAD_LIMIT)
     if not q:
         return items[:limit]
     return [i for i in items if q in i.text.lower() or q in i.engine.lower()][:limit]
@@ -168,7 +172,7 @@ def list_desk(
     pinned_only: bool = False,
 ) -> list[HistoryItem]:
     """Pinned first, then recents. Used by Clip Desk."""
-    items = search_history(query, limit=200)
+    items = search_history(query, limit=DESK_LOAD_LIMIT)
     pinned = [i for i in items if i.pinned]
     if pinned_only:
         return pinned[:limit]
@@ -182,7 +186,7 @@ def export_ledger(
     pinned_only: bool = False,
 ) -> int:
     """Write a local JSON ledger. Never includes images."""
-    items = list_desk(query, limit=LEDGER_LIMIT, pinned_only=pinned_only)
+    items = list_desk(query, limit=DESK_LOAD_LIMIT, pinned_only=pinned_only)
     payload = {
         "version": 1,
         "app": "sniptext",
@@ -209,7 +213,7 @@ def import_ledger(path: Path) -> dict[str, int]:
     if not isinstance(rows, list):
         return {"added": 0, "updated": 0, "skipped": 0}
 
-    existing = load_history(limit=LEDGER_LIMIT)
+    existing = load_history(limit=DESK_LOAD_LIMIT)
     by_id = {i.id: i for i in existing}
     by_text = {(i.text or "").strip(): i for i in existing if (i.text or "").strip()}
     added = 0
@@ -260,7 +264,7 @@ def import_ledger(path: Path) -> dict[str, int]:
 def set_pinned(item_id: str, pinned: bool) -> Optional[HistoryItem]:
     # Load the whole desk. A ledger-grown file can exceed 200 rows; a short
     # load would rewrite the file and drop the tail (including pins).
-    items = load_history(limit=max(LEDGER_LIMIT * 5, 1000))
+    items = load_history(limit=DESK_LOAD_LIMIT)
     hit = None
     for it in items:
         if it.id == item_id:
@@ -274,7 +278,7 @@ def set_pinned(item_id: str, pinned: bool) -> Optional[HistoryItem]:
 
 
 def delete_item(item_id: str) -> bool:
-    items = load_history(limit=max(LEDGER_LIMIT * 5, 1000))
+    items = load_history(limit=DESK_LOAD_LIMIT)
     next_items = [i for i in items if i.id != item_id]
     if len(next_items) == len(items):
         return False

@@ -84,6 +84,15 @@ def main() -> int:
         assert all(i.id != "10" for i in after_del)
         assert any(i.id == "219" for i in after_del)
 
+        # Clip Desk / export / import must see the full ledger-grown desk
+        desk = hist.list_desk("", limit=300)
+        assert len(desk) == 219, len(desk)
+        assert any(i.id == "219" for i in desk)
+        n = hist.export_ledger(Path(tmp) / "full-ledger.json")
+        assert n == 219, n
+        hist.import_ledger(Path(tmp) / "full-ledger.json")
+        assert len(hist.load_history(limit=500)) == 219
+
         hist.last_region_path = lambda: Path(tmp) / "last_region.json"
         hist.save_last_region((10, 20, 300, 80))
         replay = hist.load_last_region()
