@@ -61,6 +61,29 @@ def main() -> int:
         rows = hist.load_history(limit=200)
         assert len(rows) == 1 and rows[0].pinned
 
+        # pin/delete must not truncate a ledger-grown desk past 200 rows
+        hist.clear_history()
+        bulk = [
+            hist.HistoryItem(
+                id=str(i),
+                text=f"bulk {i}",
+                engine="rapid",
+                created_at=float(i),
+            )
+            for i in range(220)
+        ]
+        hist.save_history(bulk, limit=220)
+        assert len(hist.load_history(limit=500)) == 220
+        assert hist.set_pinned("5", True) is not None
+        after_pin = hist.load_history(limit=500)
+        assert len(after_pin) == 220, len(after_pin)
+        assert any(i.id == "5" and i.pinned for i in after_pin)
+        assert hist.delete_item("10") is True
+        after_del = hist.load_history(limit=500)
+        assert len(after_del) == 219
+        assert all(i.id != "10" for i in after_del)
+        assert any(i.id == "219" for i in after_del)
+
         hist.last_region_path = lambda: Path(tmp) / "last_region.json"
         hist.save_last_region((10, 20, 300, 80))
         replay = hist.load_last_region()

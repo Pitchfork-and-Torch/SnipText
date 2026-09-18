@@ -258,7 +258,9 @@ def import_ledger(path: Path) -> dict[str, int]:
 
 
 def set_pinned(item_id: str, pinned: bool) -> Optional[HistoryItem]:
-    items = load_history(limit=200)
+    # Load the whole desk. A ledger-grown file can exceed 200 rows; a short
+    # load would rewrite the file and drop the tail (including pins).
+    items = load_history(limit=max(LEDGER_LIMIT * 5, 1000))
     hit = None
     for it in items:
         if it.id == item_id:
@@ -267,12 +269,12 @@ def set_pinned(item_id: str, pinned: bool) -> Optional[HistoryItem]:
             break
     if hit is None:
         return None
-    save_history(items, limit=max(len(items), 50))
+    save_history(items, limit=max(len(items), LEDGER_LIMIT))
     return hit
 
 
 def delete_item(item_id: str) -> bool:
-    items = load_history(limit=200)
+    items = load_history(limit=max(LEDGER_LIMIT * 5, 1000))
     next_items = [i for i in items if i.id != item_id]
     if len(next_items) == len(items):
         return False
