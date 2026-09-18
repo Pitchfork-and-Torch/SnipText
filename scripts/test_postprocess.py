@@ -23,6 +23,15 @@ def main() -> None:
     assert maybe_plain("see [docs](https://example.com/x) now", False) == "see docs now"
     assert maybe_plain("keep [docs](https://example.com/x)", True) == "keep [docs](https://example.com/x)"
     assert maybe_plain("was ~~old~~ now", False) == "was old now"
+    # Nested parens in the URL must not leave a trailing ")".
+    assert (
+        maybe_plain(
+            "see [wiki](https://en.wikipedia.org/wiki/Face_(disambiguation)) now",
+            False,
+        )
+        == "see wiki now"
+    )
+    assert maybe_plain("go [lab](https://example.com/a_(b)) x", False) == "go lab x"
     assert maybe_plain("keep ~~marked~~", True) == "keep ~~marked~~"
     print("POSTPROCESS OK")
 
