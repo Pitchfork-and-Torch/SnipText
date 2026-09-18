@@ -20,6 +20,8 @@ def main() -> None:
     assert maybe_plain("keep *this*", True) == "keep *this*"
     # Old [*_`]+ path turned hello_world into helloworld.
     assert "_" in maybe_plain("snake_case_id", False)
+    assert maybe_plain("see [docs](https://example.com/x) now", False) == "see docs now"
+    assert maybe_plain("keep [docs](https://example.com/x)", True) == "keep [docs](https://example.com/x)"
     print("POSTPROCESS OK")
 
 
