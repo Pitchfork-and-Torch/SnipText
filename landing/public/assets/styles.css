@@ -38,6 +38,27 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.55rem 0.85rem;
+  background: #0f172a;
+  color: #f1f5f9;
+  border: 1px solid rgba(91, 219, 255, 0.35);
+  border-radius: 0.45rem;
+  text-decoration: none;
+  font: 600 0.9rem/1.2 var(--font-body);
+}
+.skip:focus,
+.skip:focus-visible {
+  top: 0.75rem;
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
 a {
   color: var(--cyan);
   text-decoration: none;
