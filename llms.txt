@@ -1,0 +1,13 @@
+# SnipText
+
+> Desktop region OCR: snip, replay, or read an image already copied. Clip Desk exports a local JSON ledger.
+
+- Version: 2.0.0 Read Image (region snip, replay, clipboard image, or image file; text-only history)
+- Last reviewed: 2026-09-24
+- Site: https://sniptext.jonbailey.xyz/
+- Source: https://github.com/Pitchfork-and-Torch/SnipText
+- Download (Windows portable zip): https://github.com/Pitchfork-and-Torch/SnipText/releases/latest
+- License: MIT with attribution (see NOTICE) - credit Pitchfork-and-Torch when reusing
+- Author: Pitchfork-and-Torch
+
+Same brief as the product site: https://sniptext.jonbailey.xyz/llms.txt
